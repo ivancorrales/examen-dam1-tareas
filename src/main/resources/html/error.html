@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #1f2933;
+        }
+
+        .app-header {
+            background: #1f2937;
+            color: white;
+            padding: 24px 40px;
+        }
+
+        .app-header h1 {
+            margin: 0 0 8px 0;
+        }
+
+        .app-header p {
+            margin: 0;
+            color: #d1d5db;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 32px auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .muted {
+            color: #6b7280;
+        }
+
+        .error-card {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header class="app-header">
+    <h1>Gestión de tareas</h1>
+    <p>Se ha producido un problema</p>
+</header>
+
+<main class="container">
+
+    <section class="card error-card">
+        <h2>No se ha podido completar la operación</h2>
+
+        <p>
+            Ha ocurrido un error al procesar la solicitud.
+        </p>
+
+        <p class="muted">
+            Revisa los datos introducidos o vuelve al listado de tareas.
+        </p>
+
+        <div class="form-actions">
+            <a class="btn btn-primary" href="/tareas">
+                Volver al listado
+            </a>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>

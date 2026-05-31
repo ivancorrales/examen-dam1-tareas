@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de tarea</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #1f2933;
+        }
+
+        .app-header {
+            background: #1f2937;
+            color: white;
+            padding: 24px 40px;
+        }
+
+        .app-header h1 {
+            margin: 0 0 8px 0;
+        }
+
+        .app-header p {
+            margin: 0;
+            color: #d1d5db;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 32px auto;
+        }
+
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .page-title h2 {
+            margin: 0 0 6px 0;
+        }
+
+        .page-title p {
+            margin: 0;
+            color: #6b7280;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .form-group label {
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+        }
+
+        .checkbox-group {
+            justify-content: center;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .error-message {
+            color: #b91c1c;
+            font-size: 13px;
+            margin: 6px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+
+<header class="app-header">
+    <h1>Gestión de tareas</h1>
+    <p>Formulario de creación y edición de tareas</p>
+</header>
+
+<main class="container">
+
+    <section class="page-title">
+        <div>
+            <h2>Nueva tarea</h2>
+            <p>Completa los datos de la tarea.</p>
+        </div>
+
+        <a class="btn btn-secondary" href="/tareas">
+            Volver al listado
+        </a>
+    </section>
+
+    <section class="card">
+
+        <form class="task-form" action="/tareas" method="post">
+
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input
+                        type="text"
+                        id="titulo"
+                        name="titulo"
+                        value="Preparar presentación del proyecto"
+                        placeholder="Introduce el título de la tarea">
+                <p class="error-message">
+                    El título es obligatorio.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea
+                        id="descripcion"
+                        name="descripcion"
+                        rows="5"
+                        placeholder="Describe la tarea">Crear una presentación inicial para explicar el estado del proyecto al equipo.</textarea>
+                <p class="error-message">
+                    La descripción es obligatoria.
+                </p>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado">
+                        <option value="">Selecciona un estado</option>
+                        <option value="PENDIENTE" selected>Pendiente</option>
+                        <option value="EN_PROCESO">En proceso</option>
+                        <option value="COMPLETADA">Completada</option>
+                    </select>
+                    <p class="error-message">
+                        El estado es obligatorio.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="prioridad">Prioridad</label>
+                    <select id="prioridad" name="prioridad">
+                        <option value="">Selecciona una prioridad</option>
+                        <option value="BAJA">Baja</option>
+                        <option value="MEDIA">Media</option>
+                        <option value="ALTA" selected>Alta</option>
+                    </select>
+                    <p class="error-message">
+                        La prioridad es obligatoria.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="fechaLimite">Fecha límite</label>
+                    <input
+                            type="date"
+                            id="fechaLimite"
+                            name="fechaLimite"
+                            value="2026-06-10">
+                    <p class="error-message">
+                        La fecha límite es obligatoria.
+                    </p>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input
+                                type="checkbox"
+                                id="completada"
+                                name="completada">
+                        Tarea completada
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="empleadoId">Persona asignada</label>
+                <select id="empleadoId" name="empleadoId">
+                    <option value="">Selecciona una persona</option>
+                    <option value="1" selected>Laura Sánchez - laura.sanchez@empresa.com</option>
+                    <option value="2">Carlos Martín - carlos.martin@empresa.com</option>
+                    <option value="3">Marta López - marta.lopez@empresa.com</option>
+                    <option value="4">David García - david.garcia@empresa.com</option>
+                    <option value="5">Nerea Torres - nerea.torres@empresa.com</option>
+                </select>
+                <p class="error-message">
+                    Debes seleccionar una persona asignada.
+                </p>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">
+                    Guardar tarea
+                </button>
+
+                <a class="btn btn-secondary" href="/tareas">
+                    Cancelar
+                </a>
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+</body>
+</html>
